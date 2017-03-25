@@ -1,0 +1,23 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    
+    <div class="navbar-header">
+      <a [routerLink]="['']" class="navbar-brand">Todo App</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]="['']">Home<span class="sr-only">(current)</span></a></li>
+        <li><a href="">Create New</a></li>
+        <li><a [routerLink]="['grid']">Groups</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="!user.loggedIn"><a [routerLink]="['/login']">Login</a></li>
+        <li *ngIf="user.loggedIn"><a (click)="logout()">Logout, {{user.getUsername()}}</a></li>        
+      </ul>
+    </div>
+    
+
+  </div>
+</nav>

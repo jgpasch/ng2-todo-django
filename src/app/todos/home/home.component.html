@@ -1,0 +1,5 @@
+<div class="container">
+  <app-todos-list (todoSelected)="selectedTodo = $event" [newTodo]="newTodo"></app-todos-list>
+  <app-create-todo (todoCreated)="newTodo = $event" *ngIf="!selectedTodo"></app-create-todo>
+  <app-todos-detail *ngIf="selectedTodo" [selectedTodo]="selectedTodo" ></app-todos-detail>
+</div>

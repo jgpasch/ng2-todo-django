@@ -1,0 +1,8 @@
+<div class="col-xs-5">
+  <h2>Todos</h2>
+  <hr>
+  <ul class="list-group">
+    <app-todos-item *ngFor="let todo of todos" (click)="wasSelected(todo)" (completedEmitter)="addCompleted($event)" [todo]="todo"></app-todos-item>
+  </ul>
+  <button (click)="markAsCompleted()" class="col-xs-4 col-xs-offset-4 btn btn-info">Finished</button>
+</div>

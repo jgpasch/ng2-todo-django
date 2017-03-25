@@ -1,0 +1,7 @@
+
+<label class="">Filter By:</label>
+<select (ngModelChange)="onChange($event)" [ngModel]="selectedFilter">
+  <option *ngFor="let select of selectList" value="{{select.primaryKey}}">
+    {{select.displayName}}
+  </option>
+</select>

@@ -1,0 +1,31 @@
+.grid-component {
+  background-color: #F2F2F2;
+  padding: 20px 30px;
+}
+
+.grid-row {
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.grid-title {
+  font-size: 24px;
+  display: inline-block;
+}
+
+th {
+  font-weight: normal;
+}
+
+#search-input {
+  display: inline-block;
+}
+
+.my-custom-select {
+  border: none;
+  background-color: inherit;
+  box-shadow: none;
+}
+
+/*#custom-select-div {
+  vertical-align: center;
+}*/
