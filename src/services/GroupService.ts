@@ -11,7 +11,7 @@ export class GroupService {
   constructor(private http: Http) {}
 
   getGroups(): Observable<Group[]> {
-    let headers = new Headers();
+    const headers = new Headers();
     const token = localStorage.getItem('auth_token');
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization',  `Bearer ${token}`);

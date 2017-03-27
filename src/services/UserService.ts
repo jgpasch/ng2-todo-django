@@ -28,14 +28,14 @@ export class UserService {
   // }
 
   login(username, password) {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    // tslint:disable-next-line:max-line-length
     const client_id = 'p3VExU6JFWaoGK6dDBD9PJFmpvCEbQ6QVrddMfGQ';
+    // tslint:disable-next-line:max-line-length
     const client_secret = 'xeEUczkZQl60xVvJxuVBWGMJmHp9YZA0UF9vRgGdtTIZwtxvVXYlmzn3n4QcgIlRgxrT7ENMNnxWPoMGU4bGAgn9NW7QrQUzmhDdcRIJYWhafOainwvOwXFnj8rCdDOq';
 
     // tslint:disable-next-line:max-line-length
-    let body = `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}`;
+    const body = `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}`;
 
     return this.http.post(`${serverSettings.url}/o/token/`, body, { headers})
     .map(res => res.json())
