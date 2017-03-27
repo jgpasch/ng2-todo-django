@@ -29,10 +29,13 @@ export class UserService {
   // }
 
   login(username, password) {
-    let headers = new Headers();
+    const client_id = '3yPN428VSMxaf6Oj7ZJRsixdHX2b0tf5HDGzxuJj';
+    // tslint:disable-next-line:max-line-length
+    const client_secret = 'jW2D7KiLXp5o7JoFpQQBA0UkQafnCkHFZDItNAF6P99UgaGEwEGeZJVH7c37FayPGhOznLQaZZoEO9Qdm1AZMjYqrs6RbOHrNEh4LW2XFttnEdi9ITZfJbveFfMjpw6E';
+    const headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     // tslint:disable-next-line:max-line-length
-    let body = `grant_type=password&username=${username}&password=${password}&client_id=SS3IHewuV47UvFpwnSg62gd4vCbGAALjfptzpzlf&client_secret=bucflIepziCzzUIg6Q65ZcAizCGwPlr46goxxogSNM3sIBBMZrIahe8DLxhbMamvkMoA7R7eb5quAoEU3JUCeVjR4C4RnZUhQFelAw7VGR8MGAbdDDaUa4tZWjBuR13l`;
+    const body = `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}`;
 
     return this.http.post(`${serverSettings.url}/o/token/`, body, { headers})
     .map(res => res.json())
