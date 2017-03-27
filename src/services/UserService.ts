@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-// import { Subject } from 'rxjs/Subject';
 import { Http, Headers } from '@angular/http';
+import { serverSettings } from '../config/server';
 
 @Injectable()
 export class UserService {
@@ -30,9 +30,14 @@ export class UserService {
   login(username, password) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    let body = `grant_type=password&username=${username}&password=${password}&client_id=SS3IHewuV47UvFpwnSg62gd4vCbGAALjfptzpzlf&client_secret=bucflIepziCzzUIg6Q65ZcAizCGwPlr46goxxogSNM3sIBBMZrIahe8DLxhbMamvkMoA7R7eb5quAoEU3JUCeVjR4C4RnZUhQFelAw7VGR8MGAbdDDaUa4tZWjBuR13l`;
+    // tslint:disable-next-line:max-line-length
+    const client_id = 'p3VExU6JFWaoGK6dDBD9PJFmpvCEbQ6QVrddMfGQ';
+    const client_secret = 'xeEUczkZQl60xVvJxuVBWGMJmHp9YZA0UF9vRgGdtTIZwtxvVXYlmzn3n4QcgIlRgxrT7ENMNnxWPoMGU4bGAgn9NW7QrQUzmhDdcRIJYWhafOainwvOwXFnj8rCdDOq';
 
-    return this.http.post('http://localhost:8000/o/token/', body, { headers})
+    // tslint:disable-next-line:max-line-length
+    let body = `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}`;
+
+    return this.http.post(`${serverSettings.url}/o/token/`, body, { headers})
     .map(res => res.json())
     .map((res) => {
       // save token and username in localStorage

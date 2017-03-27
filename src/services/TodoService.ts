@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Http, Headers, Response } from '@angular/http';
 import Todo from '../common/Todo';
+import { serverSettings } from '../config/server';
 
 @Injectable()
 export class TodoService {
@@ -21,7 +22,7 @@ export class TodoService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization',  `Bearer ${token}`);
 
-    return this.http.get('http://localhost:8000/todos/', {headers})
+    return this.http.get(`${serverSettings.url}/todos/`, {headers})
       .map(res => res.json())
       .map((res) => {
         return res;
@@ -36,7 +37,7 @@ export class TodoService {
     headers.append('Authorization',  `Bearer ${token}`);
 
     // tslint:disable-next-line:max-line-length
-    return this.http.put(`http://localhost:8000/todos/${todo.id}/`, JSON.stringify({title: todo.title, note: todo.note, owner: todo.owner, completed }), {headers})
+    return this.http.put(`${serverSettings.url}/todos/${todo.id}/`, JSON.stringify({title: todo.title, note: todo.note, owner: todo.owner, completed }), {headers})
       .map(res => res.json())
       .map((res) => {
         console.log('done');
@@ -52,7 +53,7 @@ export class TodoService {
     headers.append('Authorization',  `Bearer ${token}`);
 
     // const newTodo: Todo = new Todo(title, note, owner);
-    return this.http.post('http://localhost:8000/todos/', JSON.stringify({title, note, owner}), {headers})
+    return this.http.post(`${serverSettings.url}/todos/`, JSON.stringify({title, note, owner}), {headers})
       .map(res => res.json())
       .map((res) => {
         console.log('done');

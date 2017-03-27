@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Http, Headers, Response } from '@angular/http';
 import Group from '../common/Group';
+import { serverSettings } from '../config/server';
 
 @Injectable()
 export class GroupService {
@@ -15,7 +16,7 @@ export class GroupService {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization',  `Bearer ${token}`);
 
-    return this.http.get('http://localhost:8000/groups/', {headers})
+    return this.http.get(`${serverSettings.url}/groups/`, {headers})
       .map(res => res.json())
       .map((res) => {
         return res;
