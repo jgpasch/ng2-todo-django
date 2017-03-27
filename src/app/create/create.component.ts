@@ -35,7 +35,7 @@ export class CreateComponent implements OnInit {
       // this would be for quickness of the todos appearing in the list.
       // this.todoCreated.emit(this.newTodo);
 
-      this.todoService.createTodo(this.title, this.note, 'John Paschal').subscribe((result) => {
+      this.todoService.createTodo(this.title.value , this.note.value, 'John Paschal').subscribe((result) => {
         toastr.success('Todo has been saved!');
         this.newTodo.id = result.id;
         this.todoCreated.emit(this.newTodo);
