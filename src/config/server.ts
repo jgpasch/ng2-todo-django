@@ -1,3 +1,3 @@
 export const serverSettings = {
-  url: 'https://www.bigspender.info'
+  url: 'https://www.bigspender.info/api'
 };
