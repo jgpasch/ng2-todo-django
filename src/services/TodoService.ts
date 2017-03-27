@@ -37,7 +37,7 @@ export class TodoService {
     headers.append('Authorization',  `Bearer ${token}`);
 
     // tslint:disable-next-line:max-line-length
-    return this.http.put(`${serverSettings.url}/${todo.id}/`, JSON.stringify({title: todo.title, note: todo.note, owner: todo.owner, completed }), {headers})
+    return this.http.put(`${serverSettings.url}/todos/${todo.id}/`, JSON.stringify({title: todo.title, note: todo.note, owner: todo.owner, completed }), {headers})
       .map(res => res.json())
       .map((res) => {
         console.log('done');

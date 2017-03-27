@@ -15,8 +15,15 @@ export class TodosItemComponent implements OnInit {
   todoCompleted(event) {
     event.stopPropagation();
     this.markedCompleted = !this.markedCompleted;
-    console.log('emitting: ', this.todo.id);
-    this.completedEmitter.emit(this.todo.id);
+    // if the todo is complete, send the postiive ID
+    // if the todo is being unchecked send the negative ID
+    if (!this.markedCompleted) {
+      console.log('emitting: ', this.todo.id * -1);
+      this.completedEmitter.emit(this.todo.id * -1);
+    } else {
+      console.log('emitting: ', this.todo.id);
+      this.completedEmitter.emit(this.todo.id);
+    }
   }
 
   ngOnInit() {
