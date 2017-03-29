@@ -26,6 +26,8 @@ import { FormatPipeCell } from '../common/format-cell.pipe';
 import { GridFilterPipe } from '../common/grid-filter.pipe';
 import { TruncatePipe } from '../common/truncate.pipe';
 import { CustomSelectComponent } from '../common/custom-select/custom-select.component';
+import { EthComponent } from './header/eth/eth.component';
+import { EthService } from './header/eth/ethService';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { CustomSelectComponent } from '../common/custom-select/custom-select.com
     FormatPipeCell,
     GridFilterPipe,
     TruncatePipe,
-    CustomSelectComponent
+    CustomSelectComponent,
+    EthComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import { CustomSelectComponent } from '../common/custom-select/custom-select.com
     UserService,
     ToastrService,
     LoggedInGuard,
-    NotLoggedInGuard
+    NotLoggedInGuard,
+    EthService
   ],
   bootstrap: [AppComponent]
 })

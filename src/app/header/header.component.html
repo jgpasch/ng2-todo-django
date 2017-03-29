@@ -10,14 +10,14 @@
         <li><a [routerLink]="['']">Home<span class="sr-only">(current)</span></a></li>
         <li><a href="">Create New</a></li>
         <li><a [routerLink]="['grid']">Groups</a></li>
+        <li class="eth-li"><a href="https://www.coinbase.com/signin" target="_blank"><app-eth></app-eth></a></li>
       </ul>
-
+     
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!user.loggedIn"><a [routerLink]="['/login']">Login</a></li>
         <li *ngIf="user.loggedIn"><a (click)="logout()">Logout, {{user.getUsername()}}</a></li>        
       </ul>
     </div>
     
-
   </div>
 </nav>
