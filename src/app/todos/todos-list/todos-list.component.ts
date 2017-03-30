@@ -2,10 +2,7 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import Todo from '../../../common/Todo';
 import { TodoService } from '../../../services/TodoService';
 import { ToastrService } from '../../../services/ToastrService';
-// import async from 'async';
-
-// import * as toastr from 'toastr';
-// toastr.method();
+import { UserService } from '../../../services/UserService';
 
 @Component({
   selector: 'app-todos-list',
@@ -17,17 +14,15 @@ export class TodosListComponent implements OnInit {
   @Input() newTodo: Todo;
   @Output() todoSelected: EventEmitter<Todo> = new EventEmitter<Todo>();
 
-  constructor(private todoService: TodoService, private toastrService: ToastrService) { }
+  constructor(private userService: UserService, private todoService: TodoService, private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.todoService.getTodos().subscribe(res => {
-      console.log(res);
-      // this.todos = res;
       this.todos = res.filter((todo) => {
         return !todo.completed;
       });
 
-    });
+    }, (err) => { if (err.status > 399 && err.status < 405) { this.userService.logout(); }});
   }
 
   markAsCompleted() {

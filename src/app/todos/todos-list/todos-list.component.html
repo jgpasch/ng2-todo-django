@@ -5,5 +5,5 @@
     <app-todos-item *ngFor="let todo of todos" (click)="wasSelected(todo)" (completedEmitter)="toggleCompleted($event)" [todo]="todo"></app-todos-item>
   </ul>
   <p *ngIf="todos.length == 0" class="well well-sm">No Todos Left!</p>
-  <button (click)="markAsCompleted()" class="col-xs-4 col-xs-offset-4 btn btn-info">Finished</button>
+  <button *ngIf="todos.length > 0" (click)="markAsCompleted()" class="col-xs-4 col-xs-offset-4 btn btn-info">Finished</button>
 </div>

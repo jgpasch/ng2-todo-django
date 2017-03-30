@@ -10,12 +10,11 @@ import { UserService } from '../../services/UserService';
 })
 export class LoginComponent implements OnInit {
   model: any = {};
-  
+
   constructor(private userService: UserService, private router: Router) { }
 
   onSubmit() {
     this.userService.login(this.model.username, this.model.password).subscribe((result) => {
-      console.log(result);
       if (result) {
         console.log('trying to navigate to home page');
         this.router.navigate(['']);

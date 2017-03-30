@@ -62,7 +62,8 @@ export class TodoService {
   }
 
   private handleError(error: Response) {
-    return Observable.throw(error.statusText);
+    console.log(error);
+    return Observable.throw(error);
   }
 
 }

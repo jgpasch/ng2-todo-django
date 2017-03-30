@@ -15,24 +15,12 @@ export class UserService {
     console.log(`isLoggedIn: ${this.loggedIn}`);
   }
 
-  // sendMessage(message: String) {
-  //   this.subject.next({text: message});
-  // }
-
-  // clearMessage() {
-  //   this.subject.next();
-  // }
-
-  // getMessage(): Observable<any> {
-  //   return this.subject.asObservable();
-  // }
-
   login(username, password) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    const client_id = 'p3VExU6JFWaoGK6dDBD9PJFmpvCEbQ6QVrddMfGQ';
+    const client_id = serverSettings.client_id;
     // tslint:disable-next-line:max-line-length
-    const client_secret = 'xeEUczkZQl60xVvJxuVBWGMJmHp9YZA0UF9vRgGdtTIZwtxvVXYlmzn3n4QcgIlRgxrT7ENMNnxWPoMGU4bGAgn9NW7QrQUzmhDdcRIJYWhafOainwvOwXFnj8rCdDOq';
+    const client_secret = serverSettings.client_secret;
 
     // tslint:disable-next-line:max-line-length
     const body = `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}`;

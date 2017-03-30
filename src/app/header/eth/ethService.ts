@@ -14,10 +14,6 @@ export class EthService {
       .map(res => res);
   }
 
-  // updatePrice(todo, completed): Observable<number> {
-  //   return 0;
-  // }
-
   private handleError(error: Response) {
     return Observable.throw(error.statusText);
   }
