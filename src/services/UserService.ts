@@ -46,7 +46,7 @@ export class UserService {
     localStorage.removeItem('username');
     this.loggedIn = false;
   }
-  
+
   isLoggedIn() {
     return this.loggedIn;
   }
