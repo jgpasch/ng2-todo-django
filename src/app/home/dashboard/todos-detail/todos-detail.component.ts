@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SearchService } from '../../../services/SearchService';
-import Todo from '../../../common/Todo';
+import { SearchService } from '../../../../services/SearchService';
+import Todo from '../../../../common/Todo';
 
 @Component({
   selector: 'app-todos-detail',
@@ -26,6 +26,6 @@ export class TodosDetailComponent implements OnInit {
     // console.log(this.done);
   }
 
- 
+
 
 }

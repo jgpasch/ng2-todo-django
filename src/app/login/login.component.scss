@@ -1,0 +1,61 @@
+$test-variable: 100px;
+
+html, body {
+  @extend .viewport-size;
+}
+
+.viewport-size {
+  height: 100%;
+  width: 100%;
+}
+
+.login-bg-container {
+  @extend .viewport-size;
+  position: relative;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.login-bg {
+  @extend .viewport-size;
+  // background: url('./app/login/images/bg.jpg') no-repeat;
+  // background-color: #d0cbd6;
+  // background-size: cover;
+  display: table;
+}
+
+.login-bg-overlay {
+  @extend .viewport-size;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+.form-container {
+  position: relative;
+  bottom: 30px;
+  z-index: 2;
+  display: table-cell;
+  vertical-align: middle;
+  @media only screen and (max-width: 420px) {
+    bottom: 0px;
+  }
+
+  form {
+    // border: 1px solid rgba(#111111, 0.3);
+    // border-radius: 10px;
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    @media only screen and (max-width: 420px) {
+      width: 350px;
+    }
+
+
+    label {
+      float: left;
+    }
+  }
+}

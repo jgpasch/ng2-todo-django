@@ -8,9 +8,9 @@
       "root": "src",
       "outDir": "dist",
       "assets": [
-        "assets",
-        "favicon.ico"
-      ],
+  "assets",
+  "favicon.ico"
+],
       "index": "index.html",
       "main": "main.ts",
       "test": "test.ts",
@@ -21,8 +21,10 @@
         "styles.css",
         "../node_modules/toastr/build/toastr.min.css"
       ],
-      "scripts": ["../node_modules/jquery/dist/jquery.min.js",
-                  "../node_modules/toastr/build/toastr.min.js"],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/toastr/build/toastr.min.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
@@ -41,7 +43,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "prefixInterfaces": false,
     "inline": {
       "style": false,

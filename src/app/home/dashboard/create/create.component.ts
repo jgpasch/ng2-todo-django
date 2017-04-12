@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { TodoService } from '../../services/TodoService';
-import Todo from '../../common/Todo';
+import { TodoService } from '../../../../services/TodoService';
+import Todo from '../../../../common/Todo';
 
 @Component({
   selector: 'app-create-todo',
@@ -15,7 +15,7 @@ export class CreateComponent implements OnInit {
   title = new FormControl('', [ Validators.required ]);
   // note: string;
   note = new FormControl('', [ Validators.required ]);
-  loading: boolean = false;
+  loading = false;
   @Output() todoCreated: EventEmitter<Todo> = new EventEmitter<Todo>();
   @ViewChild('first') firstInput;
 

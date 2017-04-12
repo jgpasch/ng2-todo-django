@@ -1,8 +1,8 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import Todo from '../../../common/Todo';
-import { TodoService } from '../../../services/TodoService';
-import { ToastrService } from '../../../services/ToastrService';
-import { UserService } from '../../../services/UserService';
+import Todo from '../../../../common/Todo';
+import { TodoService } from '../../../../services/TodoService';
+import { ToastrService } from '../../../../services/ToastrService';
+import { UserService } from '../../../../services/UserService';
 
 @Component({
   selector: 'app-todos-list',

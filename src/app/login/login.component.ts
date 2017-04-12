@@ -1,28 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from '../../services/UserService';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+selector: 'app-login',
+templateUrl: 'login.component.html',
+styleUrls: ['login.component.scss'],
+encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
-  model: any = {};
-
-  constructor(private userService: UserService, private router: Router) { }
-
-  onSubmit() {
-    this.userService.login(this.model.username, this.model.password).subscribe((result) => {
-      if (result) {
-        console.log('trying to navigate to home page');
-        this.router.navigate(['']);
-      }
-    });
-  }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
+    if (this.userService.isLoggedIn()) {
+      this.router.navigate(['/home']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
-
 }
