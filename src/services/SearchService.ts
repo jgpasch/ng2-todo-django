@@ -9,10 +9,11 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SearchService {
   results;
-  
+
   constructor(private http: Http) { }
 
   getTodos(myQuery) {
+    // tslint:disable-next-line:max-line-length
     return this.http.get(`https://www.googleapis.com/customsearch/v1?key=AIzaSyD6BTGdvYGS7oGprF-Sw4TM1AINcnvPUaU&cx=005197000115486446597:zeb0jqexzii&q=${myQuery}`)
       .map(this.extractData)
       .catch(this.handleError);
