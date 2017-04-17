@@ -12,7 +12,7 @@ import { LoggedInGuard } from '../services/logged-in.guard';
 // ];
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home/create', pathMatch: 'full' },
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
   { path: 'home', loadChildren: './home/home.module#HomeModule', canActivate: [LoggedInGuard] }
 ];

@@ -10,11 +10,31 @@ export class TodoService {
   //   new Todo('Learn about Webpack 2', 'www.webpack.com', 'John Paschal'),
   //   new Todo('Go through node rest api source', 'npm.org', 'John Paschal'),
   //   new Todo('Read oldcastle proposal', 'www.oldcastle.com', 'John Paschal'),
-  //   new Todo('Order lunch for the team', 'www.fiveguys.com', 'John Paschal')    
+  //   new Todo('Order lunch for the team', 'www.fiveguys.com', 'John Paschal')
   // ];
 
-
   constructor(private http: Http) { }
+
+  getLocalTodo(id): Todo {
+    return (this.todos.filter((todo) => {
+      return todo.id === id;
+    }))[0];
+  }
+
+  getSingleTodo(id): Observable<Todo> {
+
+    const headers = new Headers();
+    const token = localStorage.getItem('auth_token');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization',  `Bearer ${token}`);
+
+    return this.http.get(`${serverSettings.url}/todos/${id}/`, { headers })
+
+      .map(res => res.json())
+      .map((res) => {
+        return res;
+      });
+  }
 
   getTodos(): Observable<Todo[]> {
     const headers = new Headers();
@@ -25,6 +45,8 @@ export class TodoService {
     return this.http.get(`${serverSettings.url}/todos/`, {headers})
       .map(res => res.json())
       .map((res) => {
+        this.todos = res;
+        console.log(this.todos);
         return res;
       })
       .catch(this.handleError);
