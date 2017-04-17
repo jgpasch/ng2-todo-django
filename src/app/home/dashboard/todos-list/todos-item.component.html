@@ -1,4 +1,4 @@
-<a href="#" class="list-group-item clearfix">
+<a (click)="goToRoute(todo.id)" class="list-group-item clearfix">
   <div [ngClass]="{markedCompleted: this.markedCompleted}">
     <input (click)="todoCompleted($event)" type="checkbox" class="item-checkbox"/>
     <h4 class="list-group-item-heading test">{{todo?.title}}</h4>

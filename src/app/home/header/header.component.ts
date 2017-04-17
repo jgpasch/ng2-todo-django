@@ -17,21 +17,6 @@ export class HeaderComponent implements OnInit {
     this.user.logout();
     this.router.navigate(['/login']);
   }
-  // getUserStatus() {
-  //   if (this.user.isLoggedIn) {
-  //     return 'Logout';
-  //   } else {
-  //     return 'Login';
-  //   }
-  // }
-
-  // toggleUserStatus() {
-  //   console.log('am i running');
-  //   if (this.user.isLoggedIn) {
-  //     localStorage.removeItem('auth_token');
-  //     this.router.navigate(['/login']);
-  //   }
-  // }
 
   ngOnInit() {
   }

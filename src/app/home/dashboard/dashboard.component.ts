@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
+
+import Todo from '../../../common/Todo';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  selectedTodo: Todo;
 
   constructor() { }
+
+
+  setSelectedTodo(todo) {
+    this.selectedTodo = todo;
+  }
 
   ngOnInit() {
     console.log('dashboard component initializing');

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import Todo from '../../../../common/Todo';
 
 @Component({
@@ -10,7 +11,11 @@ export class TodosItemComponent implements OnInit {
   @Output() completedEmitter: EventEmitter<number> = new EventEmitter<number>();
   markedCompleted: Boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  goToRoute(id) {
+    this.router.navigate(['home/details/', id]);
+  }
 
   todoCompleted(event) {
     event.stopPropagation();

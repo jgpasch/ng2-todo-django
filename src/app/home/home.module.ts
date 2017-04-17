@@ -11,20 +11,26 @@ import { TodosDetailComponent } from './dashboard/todos-detail/todos-detail.comp
 import { TodosListComponent } from './dashboard/todos-list/todos-list.component';
 import { TodosItemComponent } from './dashboard/todos-list/todos-item.component';
 
+import { HeaderComponent } from './header/header.component';
+import { EthComponent } from './header/eth/eth.component';
+import { EthService } from './header/eth/ethService';
+
 import { TruncatePipe } from '../../common/truncate.pipe';
 
 @NgModule({
   imports: [CommonModule,
             ReactiveFormsModule,
             HomeRoutingModule],
-  providers: [],
+  providers: [ EthService ],
   declarations: [ HomeComponent,
                   DashboardComponent,
                   CreateComponent,
                   TodosDetailComponent,
                   TodosListComponent,
                   TodosItemComponent,
-                  TruncatePipe],
+                  TruncatePipe,
+                  HeaderComponent,
+                  EthComponent],
   exports: [ HomeComponent ]
 })
 export class HomeModule { }

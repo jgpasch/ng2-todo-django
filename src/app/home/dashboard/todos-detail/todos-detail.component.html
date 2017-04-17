@@ -1,10 +1,13 @@
-<div class="col-xs-7">
-  <div class="list-group-item">
-    <h1 class="list-group-item-heading">{{selectedTodo?.title}}</h1>
-    <h2 class="list-group-item-text">{{selectedTodo?.note}}</h2>
-    <h3 class="list-group-item-text">{{selectedTodo?.owner}}</h3>  
+<div *ngIf="selectedTodo">
+  <div class="col-xs-7">
+    <div class="list-group-item">
+      <h1 class="list-group-item-heading">{{selectedTodo?.title}}</h1>
+      <h2 class="list-group-item-text">{{selectedTodo?.note}}</h2>
+      <h3 class="list-group-item-text">{{selectedTodo?.owner}}</h3>
+    </div>
+    <button (click)="goToCreate()" style="display: block; margin: 25px auto" class="btn btn-success">Create new todo</button>
+
   </div>
-  <button (click)="goToCreate()" style="display: block; margin: 25px auto" class="btn btn-success">Create new todo</button>
-  
 </div>
+<div *ngIf="!selectedTodo">Loading...</div>
 
