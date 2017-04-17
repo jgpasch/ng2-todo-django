@@ -15,6 +15,8 @@ import { HeaderComponent } from './header/header.component';
 import { EthComponent } from './header/eth/eth.component';
 import { EthService } from './header/eth/ethService';
 
+import { DetailsEditComponent } from './dashboard/todos-detail/edit/todos-details-edit.component';
+
 import { TruncatePipe } from '../../common/truncate.pipe';
 
 @NgModule({
@@ -30,7 +32,8 @@ import { TruncatePipe } from '../../common/truncate.pipe';
                   TodosItemComponent,
                   TruncatePipe,
                   HeaderComponent,
-                  EthComponent],
+                  EthComponent,
+                  DetailsEditComponent],
   exports: [ HomeComponent ]
 })
 export class HomeModule { }

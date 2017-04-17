@@ -1,11 +1,21 @@
 <div *ngIf="selectedTodo">
   <div class="col-xs-7">
-    <div class="list-group-item">
-      <h1 class="list-group-item-heading">{{selectedTodo?.title}}</h1>
-      <h2 class="list-group-item-text">{{selectedTodo?.note}}</h2>
-      <h3 class="list-group-item-text">{{selectedTodo?.owner}}</h3>
+    <div class="row">
+      <div style="position: relative;">
+        <div id="detail-container" (mouseenter)="mouseIn()" (mouseleave)="mouseOut()" class="col-xs-8 col-xs-offset-2 well well-sm">
+          <div class="text-center">
+            <p class="title" >{{selectedTodo?.title}}</p>
+            <hr class="detail-hr" />
+          </div>
+          <a href="{{selectedTodo?.note}}" target="_blank" ><p >Notes: {{selectedTodo?.note}}</p></a>
+          <p>Finish By: April 24, 2017</p>
+          <span (click)="goToEdit()" class="edit-x" *ngIf="mouseInside">EDIT</span>
+        </div>
+      </div>
     </div>
-    <button (click)="goToCreate()" style="display: block; margin: 25px auto" class="btn btn-success">Create new todo</button>
+    <div class="row">
+      <button (click)="goToCreate()" style="display: block; margin: 15px auto" class="btn btn-success">Create new todo</button>
+    </div>
 
   </div>
 </div>

@@ -6,11 +6,13 @@ import Todo from '../../../../common/Todo';
 
 @Component({
   selector: 'app-todos-detail',
-  templateUrl: './todos-detail.component.html'
+  templateUrl: './todos-detail.component.html',
+  styleUrls: ['./todos-detail.component.css']
 })
 export class TodosDetailComponent implements OnInit {
   selectedTodo: Todo;
   todoID: number;
+  mouseInside: boolean;
 
   constructor(private router: Router, private route: ActivatedRoute, private todoService: TodoService) { }
 
@@ -20,7 +22,9 @@ export class TodosDetailComponent implements OnInit {
 
   ngOnInit() {
     // get the todo ID from route params
+    console.log('do i init again?');
     this.route.params.subscribe(params => {
+      console.log(' and me too?');
       this.todoID = +params['id'];
 
       // set the selected Todo, if we already have pulled todos from server
@@ -37,6 +41,16 @@ export class TodosDetailComponent implements OnInit {
     });
   }
 
+  mouseIn() {
+    this.mouseInside = true;
+  }
 
+  mouseOut() {
+    this.mouseInside = false;
+  }
 
+  goToEdit() {
+    const path = `home/details/${this.todoID}/edit`;
+    this.router.navigate([path]);
+  }
 }

@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { CreateComponent } from './dashboard/create/create.component';
 import { TodosDetailComponent } from './dashboard/todos-detail/todos-detail.component';
+import { DetailsEditComponent } from './dashboard/todos-detail/edit/todos-details-edit.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
       { path: '', component: DashboardComponent,
         children: [
           { path: 'create', component: CreateComponent },
-          { path: 'details/:id', component: TodosDetailComponent }
+          { path: 'details/:id', component: TodosDetailComponent },
+          { path: 'details/:id/edit', component: DetailsEditComponent }
         ]
       }
     ]
