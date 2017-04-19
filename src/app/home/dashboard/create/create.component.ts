@@ -26,8 +26,9 @@ export class CreateComponent implements OnInit {
       this.createForm();
   }
 
-  onSubmit() {
+  onSubmit(event) {
     if (this.todoForm.valid) {
+      // event.preventDefault();
       this.newTodo = new Todo(this.title.value , this.note.value , 'John Paschal');
 
       // put this line below back in, if you decide that the frontend should choose the ID

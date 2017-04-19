@@ -7,7 +7,7 @@
             <p class="title" >{{selectedTodo?.title}}</p>
             <hr class="detail-hr" />
           </div>
-          <a href="{{selectedTodo?.note}}" target="_blank" ><p >Notes: {{selectedTodo?.note}}</p></a>
+          <a href="{{selectedTodo?.note}}" target="_blank" ><p class="truncate">Notes: {{selectedTodo?.note}}</p></a>
           <p>Finish By: April 24, 2017</p>
           <span (click)="goToEdit()" class="edit-x" *ngIf="mouseInside">EDIT</span>
         </div>
