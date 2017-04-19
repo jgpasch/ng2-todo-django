@@ -5,8 +5,7 @@ import Todo from '../../../../common/Todo';
 
 @Component({
   selector: 'app-create-todo',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  templateUrl: './create.component.html'
 })
 export class CreateComponent implements OnInit {
   todoForm: FormGroup;
