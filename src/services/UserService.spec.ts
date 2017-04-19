@@ -1,13 +1,12 @@
 import { UserService } from './UserService';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { Http, BaseRequestOptions, Response, ResponseOptions, XHRBackend } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import 'rxjs/add/operator/map';
 import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
 
 describe('User Service', () => {
-  // let userSvc: UserService, backend: MockBackend,
-  //     mockHttp;
+
   const mockResponse = {
     access_token: 'asdfadsf',
     expires_in: 3600,

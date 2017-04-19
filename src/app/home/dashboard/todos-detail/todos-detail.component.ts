@@ -22,9 +22,7 @@ export class TodosDetailComponent implements OnInit {
 
   ngOnInit() {
     // get the todo ID from route params
-    console.log('do i init again?');
     this.route.params.subscribe(params => {
-      console.log(' and me too?');
       this.todoID = +params['id'];
 
       // set the selected Todo, if we already have pulled todos from server

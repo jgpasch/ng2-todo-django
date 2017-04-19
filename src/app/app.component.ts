@@ -8,16 +8,13 @@ import Todo from '../common/Todo';
   styleUrls: ['./../assets/styles/reset.scss']
 })
 export class AppComponent implements OnInit {
-  // selectedTodo: Todo;
 
   constructor(private todoService: TodoService) {
 
   }
 
   ngOnInit() {
-    console.log('i shuold be running');
     this.todoService.getTodos();
   }
 
-  title = 'app works!';
 }

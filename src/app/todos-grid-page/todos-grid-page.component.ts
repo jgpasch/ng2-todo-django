@@ -36,7 +36,7 @@ export class TodosGridPageComponent implements OnInit {
       displayName: 'Manager Email'
     }
   ];
-  
+
   // setup ColumnSettings
   projectSettings: ColumnSetting[] = [
     {
@@ -72,7 +72,6 @@ export class TodosGridPageComponent implements OnInit {
 
   ngOnInit() {
     this.groupService.getGroups().subscribe(res => {
-      console.log('grabbed the groups', res);
       this.groups = res;
     });
   }

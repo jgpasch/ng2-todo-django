@@ -40,14 +40,19 @@ export class LoginFormComponent implements OnInit {
           this.router.navigate(['']);
         }
       }, (err) => {
-        const json = JSON.parse(err._body);
-        this.toastr.warning(json.error_description);
-        this.firstInput.nativeElement.focus();
+        if (err.status === 0) {
+          this.toastr.warning('Server Error');
+        } else {
+          const json = JSON.parse(err._body);
+          this.toastr.warning(json.error_description);
+          this.firstInput.nativeElement.focus();
+        }
       });
     } else {
       this.username.markAsTouched();
-      console.log('marked');
+      this.username.markAsPristine();
       this.password.markAsTouched();
+      this.password.markAsPristine();
     }
   }
 

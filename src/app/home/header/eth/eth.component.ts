@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EthService } from './ethService';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-eth',
@@ -17,7 +19,6 @@ export class EthComponent implements OnInit {
 
   ngOnInit() {
     this.ethService.getPrice().subscribe((res) => {
-      console.log(res);
       this.ethPrice = res.data.amount - .50;
     });
 
@@ -26,7 +27,6 @@ export class EthComponent implements OnInit {
       .map(res => res.data);
 
     obs.subscribe(res => this.ethPrice = res.amount);
-    // obs.subscribe(res => console.log(res.amount));
 
   }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
 import { Http, Headers } from '@angular/http';
 import { serverSettings } from '../config/server';
 import { ToastrService } from '../services/ToastrService';
@@ -37,6 +38,7 @@ export class UserService {
       return res;
     })
     .catch(err => {
+      console.log('im here');
       return Observable.throw(err);
     });
   }

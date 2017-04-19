@@ -10,10 +10,7 @@ export class NotLoggedInGuard implements CanActivate {
     if (!this.user.isLoggedIn()) {
       return true;
     } else {
-      console.log('taking you to home page');
-      // this.router.navigate(['/']);
       return false;
     }
-    // return !this.user.isLoggedIn();
   }
 }

@@ -23,7 +23,6 @@ export class TodosListComponent implements OnInit, OnChanges, OnDestroy {
               private toastrService: ToastrService,
               private todoCreatedService: TodoCreatedService) {
         this.subscription = this.todoCreatedService.todoAnnounced$.subscribe((todo) => {
-          console.log(todo, ' was received');
           this.newTodoReceived(todo);
         });
       }
@@ -70,7 +69,6 @@ export class TodosListComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       this.completedTodos.push(todoId);
     }
-    console.log('list is now: ', this.completedTodos);
   }
 
   ngOnChanges() {

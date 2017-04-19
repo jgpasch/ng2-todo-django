@@ -49,17 +49,14 @@ export class DetailsEditComponent implements OnInit {
   }
 
   onSubmit() {
-    // const updatedTodo = Objecet.assign(new Todo())
     // tslint:disable-next-line:max-line-length
     const todo = new Todo(this.editForm.value.title, this.editForm.value.note, this.selectedTodo.owner, this.selectedTodo.number, this.selectedTodo.completed, this.selectedTodo.id);
     this.todoService.updateTodo(todo, false)
       .subscribe(res => {
         this.router.navigate(['home/details', this.todoID]);
       });
-    console.log('im saving the new values');
   }
 
   ngOnInit() {
-    // this.todoService.updateTodo(this.selectedTodo, )
   }
 }

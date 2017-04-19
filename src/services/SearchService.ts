@@ -20,8 +20,7 @@ export class SearchService {
   }
 
   private extractData(res: Response) {
-    console.log(res)
-    let body = res.json();
+    const body = res.json();
     return body.items || {};
   }
 

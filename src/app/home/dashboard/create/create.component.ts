@@ -30,7 +30,6 @@ export class CreateComponent implements OnInit {
 
       this.createForm();
       this.subscription = todoCreatedService.todoConfirmed$.subscribe((todo) => {
-        console.log(todo, ' was received');
       });
   }
 
