@@ -1,20 +1,32 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy, EventEmitter, Output, Input } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
 import Todo from '../../../../common/Todo';
 import { TodoService } from '../../../../services/TodoService';
 import { ToastrService } from '../../../../services/ToastrService';
 import { UserService } from '../../../../services/UserService';
+import { TodoCreatedService } from '../../../../services/TodoCreatedService';
 
 @Component({
   selector: 'app-todos-list',
   templateUrl: './todos-list.component.html'
 })
-export class TodosListComponent implements OnInit {
+export class TodosListComponent implements OnInit, OnChanges, OnDestroy {
   todos: Todo[] = [];
   completedTodos: number[] = [];
   @Input() newTodo: Todo;
   @Output() todoSelected: EventEmitter<Todo> = new EventEmitter<Todo>();
+  subscription: Subscription;
 
-  constructor(private userService: UserService, private todoService: TodoService, private toastrService: ToastrService) { }
+  constructor(private userService: UserService,
+              private todoService: TodoService,
+              private toastrService: ToastrService,
+              private todoCreatedService: TodoCreatedService) {
+        this.subscription = this.todoCreatedService.todoAnnounced$.subscribe((todo) => {
+          console.log(todo, ' was received');
+          this.newTodoReceived(todo);
+        });
+      }
 
   ngOnInit() {
     this.todoService.getTodos().subscribe(res => {
@@ -63,6 +75,10 @@ export class TodosListComponent implements OnInit {
 
   ngOnChanges() {
     this.newTodoReceived(this.newTodo);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   newTodoReceived(newTodo: Todo) {
