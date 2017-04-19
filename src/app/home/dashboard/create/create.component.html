@@ -3,12 +3,12 @@
   <form [formGroup]="todoForm" name="create-form" (ngSubmit)="onSubmit($event)">
     <div class="form-group">
       <label for="title">Title</label>
-      <input #first type="text" class="form-control" [ngClass]="{error: title.touched && title.invalid}" name="title" formControlName="title">
+      <input #first type="text" class="form-control" [ngClass]="{error: title.invalid && title.dirty}" name="title" formControlName="title">
     </div>
 
     <div class="form-group">
       <label for="note">Note</label>
-      <input type="text" class="form-control"  [ngClass]="{error: note.touched && note.invalid}" name="note" formControlName="note">
+      <input type="text" class="form-control"  [ngClass]="{error: note.invalid && note.dirty}" name="note" formControlName="note">
     </div>
 
     <div class="form-group" style="text-align: center">

@@ -1,6 +1,9 @@
 import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
+
 import { TodoService } from '../../../../services/TodoService';
+import { TodoCreatedService } from '../../../../services/TodoCreatedService';
 import Todo from '../../../../common/Todo';
 
 @Component({
@@ -17,18 +20,23 @@ export class CreateComponent implements OnInit {
   loading = false;
   @Output() todoCreated: EventEmitter<Todo> = new EventEmitter<Todo>();
   @ViewChild('first') firstInput;
+  subscription: Subscription;
 
 
   constructor(
     private todoService: TodoService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private todoCreatedService: TodoCreatedService) {
 
       this.createForm();
+      this.subscription = todoCreatedService.todoConfirmed$.subscribe((todo) => {
+        console.log(todo, ' was received');
+      });
   }
 
   onSubmit(event) {
     if (this.todoForm.valid) {
-      // event.preventDefault();
+      event.preventDefault();
       this.newTodo = new Todo(this.title.value , this.note.value , 'John Paschal');
 
       // put this line below back in, if you decide that the frontend should choose the ID
@@ -38,11 +46,17 @@ export class CreateComponent implements OnInit {
       this.todoService.createTodo(this.title.value , this.note.value, 'John Paschal').subscribe((result) => {
         toastr.success('Todo has been saved!');
         this.newTodo.id = result.id;
-        this.todoCreated.emit(this.newTodo);
+        // this.todoCreated.emit(this.newTodo);
+        this.todoCreatedService.announceTodo(this.newTodo);
       });
-      this.title.value = '';
-      this.note.value = '';
+      this.todoForm.controls['title'].setValue('');
+      this.todoForm.controls['note'].setValue('');
       this.firstInput.nativeElement.focus();
+
+      this.title.markAsUntouched();
+      this.note.markAsUntouched();
+
+
     } else {
       this.title.markAsTouched();
       this.note.markAsTouched();
@@ -57,6 +71,7 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.firstInput.nativeElement.focus();
   }
 
 }

@@ -14,6 +14,7 @@ import { TodosItemComponent } from './dashboard/todos-list/todos-item.component'
 import { HeaderComponent } from './header/header.component';
 import { EthComponent } from './header/eth/eth.component';
 import { EthService } from './header/eth/ethService';
+import { TodoCreatedService } from '../../services/TodoCreatedService';
 
 import { DetailsEditComponent } from './dashboard/todos-detail/edit/todos-details-edit.component';
 
@@ -23,7 +24,7 @@ import { TruncatePipe } from '../../common/truncate.pipe';
   imports: [CommonModule,
             ReactiveFormsModule,
             HomeRoutingModule],
-  providers: [ EthService ],
+  providers: [ EthService, TodoCreatedService ],
   declarations: [ HomeComponent,
                   DashboardComponent,
                   CreateComponent,
