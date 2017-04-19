@@ -1,6 +1,6 @@
 export const serverSettings = {
-  url: 'http://localhost:8000/api',
-  client_id: '3yPN428VSMxaf6Oj7ZJRsixdHX2b0tf5HDGzxuJj',
+  url: 'https://www.bigspender.info/api',
+  client_id: 'p3VExU6JFWaoGK6dDBD9PJFmpvCEbQ6QVrddMfGQ',
   // tslint:disable-next-line:max-line-length
-  client_secret: 'jW2D7KiLXp5o7JoFpQQBA0UkQafnCkHFZDItNAF6P99UgaGEwEGeZJVH7c37FayPGhOznLQaZZoEO9Qdm1AZMjYqrs6RbOHrNEh4LW2XFttnEdi9ITZfJbveFfMjpw6E'
+  client_secret: 'xeEUczkZQl60xVvJxuVBWGMJmHp9YZA0UF9vRgGdtTIZwtxvVXYlmzn3n4QcgIlRgxrT7ENMNnxWPoMGU4bGAgn9NW7QrQUzmhDdcRIJYWhafOainwvOwXFnj8rCdDOq'
 };
