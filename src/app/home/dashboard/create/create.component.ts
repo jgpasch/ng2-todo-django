@@ -5,8 +5,7 @@ import Todo from '../../../../common/Todo';
 
 @Component({
   selector: 'app-create-todo',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  templateUrl: './create.component.html'
 })
 export class CreateComponent implements OnInit {
   todoForm: FormGroup;
@@ -27,8 +26,9 @@ export class CreateComponent implements OnInit {
       this.createForm();
   }
 
-  onSubmit() {
+  onSubmit(event) {
     if (this.todoForm.valid) {
+      // event.preventDefault();
       this.newTodo = new Todo(this.title.value , this.note.value , 'John Paschal');
 
       // put this line below back in, if you decide that the frontend should choose the ID

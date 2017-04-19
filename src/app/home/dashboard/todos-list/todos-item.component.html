@@ -2,6 +2,6 @@
   <div [ngClass]="{markedCompleted: this.markedCompleted}">
     <input (click)="todoCompleted($event)" type="checkbox" class="item-checkbox"/>
     <h4 class="list-group-item-heading test">{{todo?.title}}</h4>
-    <a href="{{todo?.note}}" target="_blank"><p  class="list-group-item-text test">{{todo?.note | truncate:40 }}</p></a>
+    <a href="{{todo?.note}}" target="_blank"><p class="list-group-item-text test truncate">{{todo?.note}}</p></a>
   </div>
 </a>

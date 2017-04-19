@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   FormGroup,
@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 
 import { UserService } from '../../../services/UserService';
+import { ToastrService } from '../../../services/ToastrService';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +17,12 @@ import { UserService } from '../../../services/UserService';
 })
 export class LoginFormComponent implements OnInit {
   loginForm: FormGroup;
+  @ViewChild('firstInput') firstInput;
 
-  username = new FormControl('', []);
-  password = new FormControl('', []);
+  username = new FormControl('', [ Validators.required ]);
+  password = new FormControl('', [ Validators.required ]);
 
-  constructor(private userService: UserService, private router: Router, private builder: FormBuilder) {
+  constructor(private userService: UserService, private router: Router, private builder: FormBuilder, private toastr: ToastrService) {
     this.createForm();
   }
 
@@ -32,15 +34,26 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe((result) => {
-      if (result) {
-        console.log('trying to navigate to home page');
-        this.router.navigate(['']);
-      }
-    });
+    if (this.loginForm.valid) {
+      this.userService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe((result) => {
+        if (result) {
+          this.router.navigate(['']);
+        }
+      }, (err) => {
+        const json = JSON.parse(err._body);
+        this.toastr.warning(json.error_description);
+        this.firstInput.nativeElement.focus();
+      });
+    } else {
+      this.username.markAsTouched();
+      console.log('marked');
+      this.password.markAsTouched();
+    }
   }
 
   ngOnInit() {
+    this.firstInput.nativeElement.focus();
   }
+
 
 }

@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Http, Headers } from '@angular/http';
 import { serverSettings } from '../config/server';
+import { ToastrService } from '../services/ToastrService';
 
 @Injectable()
 export class UserService {
   private loggedIn = false;
   private userNm = localStorage.getItem('username') || '';
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private toastrService: ToastrService) {
     this.loggedIn = !!localStorage.getItem('auth_token');
   }
 
@@ -31,9 +32,12 @@ export class UserService {
       // save the username locally and set loggedIn to true
       this.userNm = username;
       this.loggedIn = true;
-      toastr.success('Welcome back ' + this.userNm + '!');
+      this.toastrService.success('Welcome back ' + this.userNm + '!');
 
       return res;
+    })
+    .catch(err => {
+      return Observable.throw(err);
     });
   }
 
