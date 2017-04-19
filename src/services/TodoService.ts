@@ -4,7 +4,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import { Http, Headers, Response } from '@angular/http';
 import Todo from '../common/Todo';
-import { serverSettings } from '../config/server';
+import { serverSettings } from '../config/localServer';
 
 @Injectable()
 export class TodoService {
