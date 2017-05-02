@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import { Http, Headers } from '@angular/http';
-import { serverSettings } from '../config/server';
+import { serverSettings } from '../config/localServer';
 import { ToastrService } from '../services/ToastrService';
 
 @Injectable()
