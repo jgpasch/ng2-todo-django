@@ -1,5 +1,7 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TodoService } from '../services/TodoService';
+import { UserService } from '../services/UserService';
 import Todo from '../common/Todo';
 
 @Component({
@@ -9,11 +11,14 @@ import Todo from '../common/Todo';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private todoService: TodoService) {
+  constructor(private todoService: TodoService, private router: Router, private userService: UserService) {
 
   }
 
   ngOnInit() {
+    if (!this.userService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+    }
     this.todoService.getTodos();
   }
 

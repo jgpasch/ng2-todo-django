@@ -55,6 +55,8 @@ export class TodosListComponent implements OnInit, OnChanges, OnDestroy {
     this.todos = this.todos.filter((todo) => {
       return (this.completedTodos.indexOf(todo.id) === -1);
     });
+
+    this.completedTodos = [];
   }
 
   wasSelected(todo: Todo) {

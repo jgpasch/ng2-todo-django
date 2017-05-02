@@ -53,7 +53,10 @@ export class CreateComponent implements OnInit {
       this.firstInput.nativeElement.focus();
 
       this.title.markAsUntouched();
+      this.title.markAsPristine();
+
       this.note.markAsUntouched();
+      this.note.markAsPristine();
 
 
     } else {
