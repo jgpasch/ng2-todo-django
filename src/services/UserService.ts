@@ -7,7 +7,7 @@ import { ToastrService } from '../services/ToastrService';
 
 @Injectable()
 export class UserService {
-  private loggedIn = false;
+  public loggedIn = false;
   private userNm = localStorage.getItem('username') || '';
 
   constructor(private http: Http, private toastrService: ToastrService) {

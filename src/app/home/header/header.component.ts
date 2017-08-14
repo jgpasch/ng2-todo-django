@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   subscrition: Subscription;
 
-  constructor(private user: UserService, private router: Router) { }
+  constructor(public user: UserService, private router: Router) { }
 
   logout() {
     this.user.logout();
