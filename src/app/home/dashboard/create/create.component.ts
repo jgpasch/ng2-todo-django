@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { TodoService } from '../../../../services/TodoService';
 import { TodoCreatedService } from '../../../../services/TodoCreatedService';
+import { GroupSelectedService } from '../../../../services/GroupSelectedService';
 import Todo from '../../../../common/Todo';
 
 @Component({
@@ -26,7 +27,9 @@ export class CreateComponent implements OnInit {
   constructor(
     private todoService: TodoService,
     private formBuilder: FormBuilder,
-    private todoCreatedService: TodoCreatedService) {
+    private todoCreatedService: TodoCreatedService,
+    private groupSelectedService: GroupSelectedService
+  ) {
 
       this.createForm();
       this.subscription = todoCreatedService.todoConfirmed$.subscribe((todo) => {
@@ -36,13 +39,14 @@ export class CreateComponent implements OnInit {
   onSubmit(event) {
     if (this.todoForm.valid) {
       event.preventDefault();
-      this.newTodo = new Todo(this.title.value , this.note.value , 'John Paschal');
+      this.newTodo = new Todo(this.title.value , this.note.value , 'John Paschal', this.groupSelectedService.group);
 
       // put this line below back in, if you decide that the frontend should choose the ID
       // this would be for quickness of the todos appearing in the list.
       // this.todoCreated.emit(this.newTodo);
 
-      this.todoService.createTodo(this.title.value , this.note.value, 'John Paschal').subscribe((result) => {
+      // tslint:disable-next-line:max-line-length
+      this.todoService.createTodo(this.title.value , this.note.value, 'John Paschal', this.groupSelectedService.group).subscribe((result) => {
         toastr.success('Todo has been saved!');
         this.newTodo.id = result.id;
         // this.todoCreated.emit(this.newTodo);

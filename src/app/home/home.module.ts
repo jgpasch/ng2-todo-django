@@ -15,16 +15,22 @@ import { HeaderComponent } from './header/header.component';
 import { EthComponent } from './header/eth/eth.component';
 import { EthService } from './header/eth/ethService';
 import { TodoCreatedService } from '../../services/TodoCreatedService';
+import { GroupSelectedService } from '../../services/GroupSelectedService';
 
 import { DetailsEditComponent } from './dashboard/todos-detail/edit/todos-details-edit.component';
 
 import { TruncatePipe } from '../../common/truncate.pipe';
+import { GroupNamePipe } from '../../common/GroupNamePipe';
+import { TodosGroupsComponent } from './dashboard/todos-groups/todos-groups.component';
+import { GroupItemComponent } from './dashboard/todos-groups/group-item/group-item.component';
+// import { CreateGroupComponent } from './dashboard/create-group/create-group.component';
 
 @NgModule({
   imports: [CommonModule,
             ReactiveFormsModule,
-            HomeRoutingModule],
-  providers: [ EthService, TodoCreatedService ],
+            HomeRoutingModule,
+          ],
+  providers: [ EthService, TodoCreatedService, GroupSelectedService ],
   declarations: [ HomeComponent,
                   DashboardComponent,
                   CreateComponent,
@@ -32,9 +38,14 @@ import { TruncatePipe } from '../../common/truncate.pipe';
                   TodosListComponent,
                   TodosItemComponent,
                   TruncatePipe,
+                  GroupNamePipe,
                   HeaderComponent,
                   EthComponent,
-                  DetailsEditComponent],
+                  DetailsEditComponent,
+                  TodosGroupsComponent,
+                  GroupItemComponent
+                  // CreateGroupComponent
+                ],
   exports: [ HomeComponent ]
 })
 export class HomeModule { }

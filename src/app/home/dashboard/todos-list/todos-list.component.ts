@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, OnDestroy, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy, EventEmitter, Output, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import Todo from '../../../../common/Todo';
@@ -6,10 +6,11 @@ import { TodoService } from '../../../../services/TodoService';
 import { ToastrService } from '../../../../services/ToastrService';
 import { UserService } from '../../../../services/UserService';
 import { TodoCreatedService } from '../../../../services/TodoCreatedService';
+import { GroupSelectedService } from '../../../../services/GroupSelectedService';
 
 @Component({
   selector: 'app-todos-list',
-  templateUrl: './todos-list.component.html'
+  templateUrl: './todos-list.component.html',
 })
 export class TodosListComponent implements OnInit, OnChanges, OnDestroy {
   todos: Todo[] = [];
@@ -17,13 +18,23 @@ export class TodosListComponent implements OnInit, OnChanges, OnDestroy {
   @Input() newTodo: Todo;
   @Output() todoSelected: EventEmitter<Todo> = new EventEmitter<Todo>();
   subscription: Subscription;
+  groupSubscription: Subscription;
+  group: string;
 
   constructor(private userService: UserService,
               private todoService: TodoService,
               private toastrService: ToastrService,
-              private todoCreatedService: TodoCreatedService) {
+              private todoCreatedService: TodoCreatedService,
+              private groupSelectedService: GroupSelectedService
+  ) {
         this.subscription = this.todoCreatedService.todoAnnounced$.subscribe((todo) => {
+
           this.newTodoReceived(todo);
+        });
+
+        this.groupSubscription = this.groupSelectedService.groupSelected$.subscribe(groupName => {
+          this.group = groupName;
+          console.log('recieved : ', groupName);
         });
       }
 
@@ -79,9 +90,11 @@ export class TodosListComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.groupSubscription.unsubscribe();
   }
 
   newTodoReceived(newTodo: Todo) {
+    console.log('new todo received called');
     this.todos.push(newTodo);
   }
 

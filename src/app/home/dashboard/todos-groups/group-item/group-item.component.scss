@@ -1,0 +1,15 @@
+li {
+  padding: 20px 10px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  p {
+    margin: 0;
+  }
+
+  &.active {
+    border: 1px solid #2894af;
+    border-radius: 10px;
+  }
+}

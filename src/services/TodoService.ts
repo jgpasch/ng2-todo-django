@@ -62,14 +62,14 @@ export class TodoService {
       });
   }
 
-  createTodo(title, note, owner): Observable<any> {
+  createTodo(title, note, owner, group): Observable<any> {
     const headers = new Headers();
     const token = localStorage.getItem('auth_token');
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization',  `Bearer ${token}`);
 
     // const newTodo: Todo = new Todo(title, note, owner);
-    return this.http.post(`${serverSettings.url}/todos/`, JSON.stringify({title, note, owner}), {headers})
+    return this.http.post(`${serverSettings.url}/todos/`, JSON.stringify({title, note, owner, group}), {headers})
       .map(res => res.json())
       .map((res) => {
         return res;

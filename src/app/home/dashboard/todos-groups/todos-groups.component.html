@@ -1,0 +1,9 @@
+<div class="col-md-2">
+  <div class="group-list">
+    <ul #groupList>
+      <app-group-item *ngFor="let group of groupNames; let i = index" [groupName]="group" [index]="i" (click)="onClick($event, group)">
+      </app-group-item>
+    </ul>
+  </div>
+</div>
+

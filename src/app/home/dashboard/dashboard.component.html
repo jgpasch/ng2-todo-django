@@ -1,5 +1,6 @@
 <div class="container">
   <!-- <app-todos-list (todoSelected)="setSelectedTodo($event)" [newTodo]="newTodo"></app-todos-list> -->
+  <app-todos-groups [groupNames]="groups"></app-todos-groups>
   <app-todos-list (todoSelected)="setSelectedTodo($event)"></app-todos-list>
   <router-outlet></router-outlet>
 </div>

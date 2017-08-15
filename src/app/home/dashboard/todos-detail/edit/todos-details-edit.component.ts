@@ -50,7 +50,7 @@ export class DetailsEditComponent implements OnInit {
 
   onSubmit() {
     // tslint:disable-next-line:max-line-length
-    const todo = new Todo(this.editForm.value.title, this.editForm.value.note, this.selectedTodo.owner, this.selectedTodo.number, this.selectedTodo.completed, this.selectedTodo.id);
+    const todo = new Todo(this.editForm.value.title, this.editForm.value.note, this.selectedTodo.owner, this.selectedTodo.group, this.selectedTodo.number, this.selectedTodo.completed, this.selectedTodo.id);
     this.todoService.updateTodo(todo, false)
       .subscribe(res => {
         this.router.navigate(['home/details', this.todoID]);

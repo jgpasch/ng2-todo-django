@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 
 import Todo from '../../../common/Todo';
+import { TodoService } from '../../../services/TodoService';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +10,11 @@ import Todo from '../../../common/Todo';
 })
 export class DashboardComponent implements OnInit {
   selectedTodo: Todo;
+  groups: string[];
 
-  constructor() { }
+  constructor(private todoService: TodoService) {
+    this.groups = [];
+  }
 
 
   setSelectedTodo(todo) {
@@ -18,6 +22,15 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.todoService.getTodos().subscribe(res => {
+      this.groups = res.map(todo => {
+        console.log(todo.group);
+        if (this.groups.indexOf(todo.group) < 0) {
+          this.groups.push(todo.group);
+          return todo.group;
+        }
+      });
+    });
   }
 
 }

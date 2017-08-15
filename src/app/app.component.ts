@@ -10,16 +10,15 @@ import Todo from '../common/Todo';
   styleUrls: ['./../assets/styles/reset.scss']
 })
 export class AppComponent implements OnInit {
-
+  groups: string[];
   constructor(private todoService: TodoService, private router: Router, private userService: UserService) {
-
+    this.groups = [];
   }
 
   ngOnInit() {
     if (!this.userService.isLoggedIn()) {
       this.router.navigate(['/login']);
     }
-    this.todoService.getTodos();
   }
 
 }

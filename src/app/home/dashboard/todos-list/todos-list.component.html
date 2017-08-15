@@ -1,8 +1,8 @@
-<div class="col-xs-12 col-md-5">
+<div class="col-xs-12 col-md-4 col-md-offset-1">
   <h2>Todos</h2>
   <hr>
   <ul class="list-group">
-    <app-todos-item *ngFor="let todo of todos" (completedEmitter)="toggleCompleted($event)" [todo]="todo"></app-todos-item>
+    <app-todos-item *ngFor="let todo of todos | groupName : group" (completedEmitter)="toggleCompleted($event)" [todo]="todo"></app-todos-item>
   </ul>
   <p *ngIf="todos.length == 0" class="well well-sm">No Todos Left!</p>
   <button *ngIf="completedTodos.length > 0" (click)="markAsCompleted()" class="col-xs-4 col-xs-offset-4 btn btn-info">Finished</button>

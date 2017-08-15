@@ -4,7 +4,7 @@ import {Pipe, PipeTransform, Injectable} from '@angular/core';
   name: 'truncate'
 })
 @Injectable()
-export class TruncatePipe implements PipeTransform{
+export class TruncatePipe implements PipeTransform {
   transform(value: string, length: any): string {
     const trail = '...';
     if (!value) {
